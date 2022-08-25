@@ -39,8 +39,8 @@ def plot_cartesian_trajectory(traj, t, target_state=None, foot_pos=None, touch_d
                 target_state = np.empty(6)
                 target_state[:] = np.nan
             assert target_state.shape == (6,)
-            xz_ax.plot((traj[0, :]), (traj[3, :]), '-', label=label, color=color, markersize=marker_size,
-                       linestyle=linestyle, marker=marker)
+            xz_ax.plot((traj[0, :]), (traj[3, :]), label=label, color=color, markersize=marker_size,
+                      linestyle=linestyle, marker=marker)
             if area_color is not None:
                 xz_ax.fill_between((traj[0, :]), (traj[3, :]), alpha=0.1, color=area_color)
             if foot_pos is not None:
@@ -65,7 +65,7 @@ def plot_cartesian_trajectory(traj, t, target_state=None, foot_pos=None, touch_d
             xz_ax.legend(bbox_to_anchor=(1.0, 1), loc='upper left')
     x_titles = ['$\\mathbf{x [m]}$', '$\\mathbf{\\dot{x} [m/s]}$', '$\\mathbf{\\ddot{x} [m/s^2]}$']
     for i, ax in enumerate(x_axs):
-        ax.plot(t, (traj[i, :]), 'k-o', label=label, color=color, markersize=marker_size, linestyle=linestyle,
+        ax.plot(t, (traj[i, :]), label=label, color=color, markersize=marker_size, linestyle=linestyle,
                 marker=marker)
         ax.plot((t[(-1)]), (target_state[i]), 'D', color=color, markersize='6', markeredgecolor='k')
         ax.set_ylabel((x_titles[i]), fontweight='bold', fontsize=LABEL_FONT_SIZE)
@@ -76,7 +76,7 @@ def plot_cartesian_trajectory(traj, t, target_state=None, foot_pos=None, touch_d
 
     z_titles = ['$\\mathbf{z [m]}$', '$\\mathbf{\\dot{z} [m/s]}$', '$\\mathbf{\\ddot{z} [m/s^2]}$']
     for i, ax in enumerate(z_axs):
-        ax.plot(t, (traj[i + 3, :]), 'k-o', label=label, color=color, markersize=marker_size, linestyle=linestyle,
+        ax.plot(t, (traj[i + 3, :]), label=label, color=color, markersize=marker_size, linestyle=linestyle,
                 marker=marker)
         ax.plot((t[(-1)]), (target_state[(i + 3)]), 'D', color=color, markersize='6', markeredgecolor='k')
         ax.set_ylabel((z_titles[i]), fontweight='bold', fontsize=LABEL_FONT_SIZE)
